@@ -120,7 +120,7 @@ def login_page():
 
             if user:
                 # Successful login, redirect to user dashboard
-                return redirect(url_for('dashboard_page', username=username))
+                return redirect(url_for('home_page', username=username))
             else:
                 # Incorrect username or password, redirect back to login page
                 return redirect(url_for('login_page'))
@@ -189,6 +189,29 @@ def follow():
 
     except Exception as e:
         return f"Error: {str(e)}"
+    
+
+
+@app.route('/home/<username>', methods=['GET', 'POST'])
+def home_page(username):
+    if request.method == 'POST':
+        try:
+            # Handle the post request here and update the database
+            # Example: Get data from the form
+            post_text = request.form['post_text']
+
+            # Insert data into the database (replace with your logic)
+            with conn.cursor() as cursor:
+                cursor.execute("""
+                    INSERT INTO post (text, date, username, Email_ID, mediaID)
+                    VALUES (%s, CURRENT_DATE, %s, %s, NULL)
+                """, (post_text, username, "current_user_email"))
+                conn.commit()
+
+        except Exception as e:
+            return f"Error: {str(e)}"
+
+    return render_template('home.html', username=username)
 
 
 

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <style>
+        body {
+            background-color: #f0f0f0; /* Light black background */
+            color: black;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            text-align: center;
+        }
+
+        #home-container {
+            background-color: #fff; /* White container background */
+            padding: 20px;
+            border-radius: 8px;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+        }
+
+        form {
+            margin-bottom: 20px;
+        }
+
+        input[type="text"] {
+            width: 60%;
+            padding: 8px;
+            margin-right: 8px;
+        }
+
+        input[type="submit"] {
+            padding: 8px;
+            cursor: pointer;
+        }
+
+        a {
+            color: blue;
+            text-decoration: none;
+            margin-right: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div id="home-container">
+        <h1>Welcome to Your Home Page, {{ username }}</h1>
+        
+        <!-- Navigation Bar -->
+        <a href="{{ url_for('dashboard_page', username=username) }}">Dashboard</a>
+        <a href="{{ url_for('logout') }}">Logout</a>
+
+        <form method="post" action="{{ url_for('home_page', username=username) }}">
+            <!-- Add your form fields here -->
+            <input type="text" name="post_text" placeholder="Write your post">
+            <button type="submit">Post</button>
+        </form>
+        <!-- Add more content as needed -->
+    </div>
+</body>
+</html>
