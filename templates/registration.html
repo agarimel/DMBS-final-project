@@ -24,6 +24,18 @@
             width: 300px;
             text-align: center;
         }
+
+        #login-box {
+            margin-top: 20px;
+            background-color: #333;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        #login-box a {
+            color: white;
+            text-decoration: none;
+        }
     </style>
 </head>
 <body>
@@ -41,6 +53,10 @@
 
             <button type="submit">Register</button>
         </form>
+
+        <div id="login-box">
+            <p>Already a user? <a href="{{ url_for('login_page') }}">Login here</a>.</p>
+        </div>
     </div>
 </body>
 </html>

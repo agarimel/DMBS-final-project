@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Dashboard</title>
+    <style>
+        body {
+            background-color: black;
+            color: white;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            text-align: center;
+        }
+
+        #dashboard-container {
+            background-color: grey;
+            padding: 20px;
+            border-radius: 8px;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+        }
+
+        a {
+            color: blue;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="dashboard-container">
+        <h1>Welcome to Your Dashboard</h1>
+        <p>Here you can customize your dashboard content.</p>
+        <p>Add your own elements, links, and features based on your application requirements.</p>
+        <p>Feel free to modify this template according to your needs.</p>
+        <p>Logout <a href="{{ url_for('logout') }}">here</a>.</p>
+    </div>
+</body>
+</html>

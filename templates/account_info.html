@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Account Information</title>
+    <style>
+        body {
+            background-color: black;
+            color: white;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        #account-info-container {
+            background-color: grey;
+            padding: 20px;
+            border-radius: 8px;
+            width: 300px;
+            text-align: center;
+        }
+
+        input {
+            margin-bottom: 10px;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: 100%;
+        }
+
+        button {
+            background-color: blue;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div id="account-info-container">
+        <h1>Complete Your Account Information</h1>
+        <form action="{{ url_for('account_info_page', username=username, email=email) }}" method="post">
+            <!-- Your form fields here -->
+            <label for="bio">Bio:</label>
+            <input type="text" id="bio" name="bio" required><br>
+
+            <label for="full_name">Full Name:</label>
+            <input type="text" id="full_name" name="full_name" required><br>
+
+            <label for="date_of_birth">Date of Birth:</label>
+            <input type="date" id="date_of_birth" name="date_of_birth" required><br>
+
+            <label for="gender">Gender:</label>
+            <select id="gender" name="gender" required>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+                <!-- Add more options if needed -->
+            </select><br>
+
+            <button type="submit">Update Information</button>
+        </form>
+    </div>
+</body>
+</html>
