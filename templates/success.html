@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Successful</title>
+    <style>
+        body {
+            background-color: black;
+            color: white;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            text-align: center;
+        }
+
+        #success-message {
+            background-color: grey;
+            padding: 20px;
+            border-radius: 8px;
+        }
+
+        a {
+            color: blue;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="success-message">
+        <h1>Registration Successful</h1>
+        <p>You have successfully registered. Go back and <a href="{{ url_for('registration_page') }}">login</a>.</p>
+        <p>Or click <a href="{{ url_for('login_page') }}">here</a> to go to the login page directly.</p>
+    </div>
+</body>
+</html>
