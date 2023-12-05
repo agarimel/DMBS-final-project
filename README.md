@@ -13,3 +13,5 @@ Then, we activate the virtual environment - venv_name\Scripts\activate
 
 Finally, install project dependencies- pip install -r requirements.txt
 
+
+
