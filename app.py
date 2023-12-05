@@ -144,6 +144,7 @@ def dashboard_page(username):
 
     return render_template('dashboard.html', username=username, users=users, follow_status=follow_status)
 
+
 @app.route('/user/<username>/dashboard')
 def user_dashboard(username):
     # Render the user dashboard template
@@ -192,6 +193,10 @@ def follow():
     
 
 
+from flask import Flask, render_template, request, redirect, url_for, session
+
+# ... (your existing code)
+
 @app.route('/home/<username>', methods=['GET', 'POST'])
 def home_page(username):
     if request.method == 'POST':
@@ -200,18 +205,41 @@ def home_page(username):
             # Example: Get data from the form
             post_text = request.form['post_text']
 
-            # Insert data into the database (replace with your logic)
+            # Check if the user exists in the "User" table
             with conn.cursor() as cursor:
                 cursor.execute("""
-                    INSERT INTO post (text, date, username, Email_ID, mediaID)
-                    VALUES (%s, CURRENT_DATE, %s, %s, NULL)
-                """, (post_text, username, "current_user_email"))
-                conn.commit()
+                    SELECT * FROM "User"
+                    WHERE username = %s AND Email_ID = %s
+                """, (username, session.get('current_user_email')))
+                user_exists = cursor.fetchone()
+
+            if user_exists:
+                # Insert data into the database (replace with your logic)
+                with conn.cursor() as cursor:
+                    cursor.execute("""
+                        INSERT INTO post (text, date, username, Email_ID)
+                        VALUES (%s, CURRENT_DATE, %s, %s)
+                    """, (post_text, username, session.get('current_user_email')))
+
+                    conn.commit()
+            else:
+                return f"Error: User does not exist"
 
         except Exception as e:
             return f"Error: {str(e)}"
 
-    return render_template('home.html', username=username)
+    # Fetch posts from the database (replace with your logic)
+    with conn.cursor() as cursor:
+        cursor.execute("""
+            SELECT * FROM post
+            WHERE username != %s
+        """, (username,))
+        posts = cursor.fetchall()
+
+    return render_template('home.html', username=username, posts=posts)
+
+
+
 
 
 
