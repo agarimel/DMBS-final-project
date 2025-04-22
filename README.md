@@ -3,6 +3,9 @@
 # Project Description
 A social media application where users can follow and interact with one another. 
 
+# Team
+Sai Roshan Rao Nelavalli, Adi Keshava Reddy, Anush Garimella
+
 # Tech Stack
 Flask, Python, HTML, PostgreSQL.
 
